@@ -1,10 +1,24 @@
-import React, {useRef} from "react";
+import React, { useRef, useState, useEffect } from "react";
 import styles from "./MessageBox.module.css";
 import emailjs from "emailjs-com";
-const MessageBox = () => {
 
+const MessageBox = () => {
+  const initiaValues = {
+    name: "",
+    email: "",
+    message: "",
+  };
+  const [formValues, setFormValues] = useState(initiaValues);
+  // const [formErrors, setFormErrors] = useState({});
+  // const [isSubmit, setIsSubmit] = useState(false);
   const form = useRef();
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+ 
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -24,7 +38,7 @@ const MessageBox = () => {
         }
       );
 
-      e.target.reset();
+    e.target.reset();
   };
 
   return (
@@ -32,10 +46,24 @@ const MessageBox = () => {
       <div className={styles.container}>
         <form ref={form} onSubmit={sendEmail}>
           <div className={styles.form_group}>
-            <input type="text" name="name" placeholder="name" />
+            <input
+              type="text"
+              name="name"
+              placeholder="name"
+              value={formValues.name}
+              onChange={handleChange}
+              required
+            />
           </div>
           <div className={styles.form_group}>
-            <input type="email" name="email" placeholder="email" />
+            <input
+              type="email"
+              name="email"
+              placeholder="email"
+              value={formValues.email}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className={styles.msg_box}>
@@ -45,6 +73,9 @@ const MessageBox = () => {
               cols="30"
               rows="10"
               placeholder="say something..."
+              value={formValues.message}
+              onChange={handleChange}
+              required
             ></textarea>
           </div>
           <div className={styles.btn}>
