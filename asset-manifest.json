@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/messageMe/static/css/main.e5896c41.css",
+    "main.js": "/messageMe/static/js/main.afca4e69.js",
+    "static/media/bgimage.jpg": "/messageMe/static/media/bgimage.0922223efafe98747e5c.jpg",
+    "index.html": "/messageMe/index.html",
+    "main.e5896c41.css.map": "/messageMe/static/css/main.e5896c41.css.map",
+    "main.afca4e69.js.map": "/messageMe/static/js/main.afca4e69.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e5896c41.css",
+    "static/js/main.afca4e69.js"
+  ]
+}
