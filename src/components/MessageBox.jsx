@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./MessageBox.module.css";
 import emailjs from "emailjs-com";
+import swal from "sweetalert";
 
 const MessageBox = () => {
   const initiaValues = {
@@ -20,8 +21,7 @@ const MessageBox = () => {
 
  
   const sendEmail = (e) => {
-    e.preventDefault();
-
+      e.preventDefault();
     emailjs
       .sendForm(
         "service_52vosyl",
@@ -32,6 +32,8 @@ const MessageBox = () => {
       .then(
         (result) => {
           console.log(result.text);
+          // alert("Message Sent !" + result.text)
+         swal("Message Sent !", "Thank you for sending message .", "success")
         },
         (error) => {
           console.log(error.text);
