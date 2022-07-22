@@ -33,12 +33,20 @@ const MessageBox = () => {
         (result) => {
           console.log(result.text);
           // alert("Message Sent !" + result.text)
-         swal("Message Sent !", "Thank you for sending message .", "success")
+          swal({
+            title: "Message Sent !",
+            text: "Thanks for messaging me.",
+            type: "success"
+        }).then(()=>{
+           setFormValues(initiaValues)
+        });
         },
-        (error) => {
-          console.log(error.text);
-        }
-      );
+      
+      )
+      .catch(error => {
+        console.log(error.text);
+      })
+     
 
     e.target.reset();
   };
